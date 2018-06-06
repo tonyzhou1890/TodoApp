@@ -22,14 +22,13 @@ const config = {
         test: /\.jsx$/,
         loader: 'babel-loader'
       },
-      // 此部分测试用，todo app 中不需要
-      // {
-      //   test:/\.css$/,
-      //   use: [
-      //     'style-loader',
-      //     'css-loader'
-      //   ]
-      // },
+      {
+        test:/\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
       
       {
         test: /\.(jpg|jpeg|gif|png|svg)$/,
@@ -37,7 +36,7 @@ const config = {
           loader: 'url-loader',
           options: {
             limit: 1024,
-            name: '[name]-aaa.[ext]'
+            name: 'images/[name]-aaa.[ext]'
           }
         }
       }
@@ -85,9 +84,9 @@ if (isDev){
 }else{
   config.entry = {
     app:path.join(__dirname,'src/index.js'),
-    vender:['vue']
+    vendor:['vue']
   }
-  config.output.filename = '[name].[chunkhash:8].js'
+  config.output.filename = 'js/[name].[chunkhash:8].js'
   config.module.rules.push(
     {
       test: /\.styl$/,
@@ -107,9 +106,9 @@ if (isDev){
     },
   )
   config.plugins.push(
-    new ExtractPlugin('styles.[hash:8].css'),
+    new ExtractPlugin('css/styles.[hash:8].css'),
     new webpack.optimize.SplitChunksPlugin({
-      name:'vender'
+      name:'vendor'
     }),
     new webpack.optimize.SplitChunksPlugin({
       name:'runtime'
