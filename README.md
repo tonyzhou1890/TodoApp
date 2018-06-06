@@ -38,5 +38,5 @@
       }
 ```
 
-&emsp;&emsp;链接：<a href = "http://www.xn--jfs.top/apps/TodoApp/" title = "TodoApp" target = "_blank">http://www.xn--jfs.top/apps/TodoApp/</a>
+&emsp;&emsp;链接：[http://www.xn--jfs.top/apps/TodoApp/](http://www.xn--jfs.top/apps/TodoApp/ "TodoApp"){:target="_blank"}
 
