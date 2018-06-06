@@ -101,7 +101,8 @@ if (isDev){
             }
           },
           'stylus-loader'
-        ]
+        ],
+        publicPath: '../'
       })
     },
   )
