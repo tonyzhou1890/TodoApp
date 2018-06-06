@@ -38,5 +38,5 @@
       }
 ```
 
-&emsp;&emsp;链接：[http://www.xn--jfs.top/apps/TodoApp/](http://www.xn--jfs.top/apps/TodoApp/ "TodoApp"){:target="_blank"}
+&emsp;&emsp;链接：[http://www.xn--jfs.top/apps/TodoApp/](http://www.xn--jfs.top/apps/TodoApp/ "TodoApp")
 
