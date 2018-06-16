@@ -4,6 +4,8 @@ const isDev = process.env.NODE_ENV === 'development';
 const HTMLPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const ExtractPlugin = require('extract-text-webpack-plugin')
+const clean = require('clean-webpack-plugin');
+
 
 const config = {
   target: 'web',
@@ -43,6 +45,7 @@ const config = {
     ]
   },
   plugins: [
+    new clean(['dist']),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: isDev ? '"development"' : '"production"'
@@ -108,13 +111,28 @@ if (isDev){
   )
   config.plugins.push(
     new ExtractPlugin('css/styles.[hash:8].css'),
-    new webpack.optimize.SplitChunksPlugin({
-      name:'vendor'
-    }),
-    new webpack.optimize.SplitChunksPlugin({
-      name:'runtime'
+    // new webpack.optimize.SplitChunksPlugin({
+    //   name:'vendor'
+    // }),
+    // new webpack.optimize.SplitChunksPlugin({
+    //   name:'runtime'
+    // }),
+    new HTMLPlugin({
+      chunks: ['vendor','app'],
+      chunksSortMode: 'manual'
     })
   )
+  config.optimization = {
+    splitChunks:{
+      cacheGroups:{
+        commons:{
+          name:'vendor',
+          minChunks:2,
+          chunks: 'initial'
+        }
+      }
+    }
+  }
 }
 
 module.exports = config;
